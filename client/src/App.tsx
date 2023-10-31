@@ -1,8 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Login from './pages/login-page/Login';
 import Admin from './pages/home-page/Admin';
-import ProtectedPage from './components/ProtectedAdminPage';
-import { userRole } from './type/user.type';
 import Employee from './pages/home-page/Employee';
 import Home from './pages/home-page/Home';
 
