@@ -1,0 +1,38 @@
+$text-color1: hsl(0, 12%, 12%);
+$text-color2: hsl(0, 12%, 95%);
+$danger-color: hsl(0, 60%, 50%);
+
+$bg-color1: hsl(0, 12%, 90%);
+$bg-color2: hsl(0, 10%, 15%);
+$bg-color3: hsl(120, 80%, 70%);
+
+@mixin sizeXY($width, $height){
+    width: $width;
+    height: $height;
+};
+
+@mixin flex($align, $justify) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+};
+
+$breakpoints: (
+    "xsmall": 22rem,
+    "small": 40rem,
+    "medium": 56rem,
+    "large": 75rem,
+    "xlarge": 91rem,
+);
+
+@mixin responsiveToMax($size) {
+    @media (min-width: map-get($breakpoints, $size)) {
+        @content;
+    };
+};
+
+@mixin responsiveToMin($size) {
+    @media (max-width: map-get($breakpoints, $size)) {
+        @content;
+    };
+};

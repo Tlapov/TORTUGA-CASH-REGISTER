@@ -1,0 +1,46 @@
+@use "../../utilities.scss" as *;
+
+.login{
+    @include flex(flex-start, flex-start);
+    @include sizeXY(100%, 100vh);
+    @include responsiveToMin(medium){
+        flex-direction: column;
+    };
+    .login-background{
+        background: center center/cover no-repeat url('../../../public/assets/background.jpg');
+        @include sizeXY(100%, 100%);
+        object-position: 100% 100%;
+        object-fit: contain;
+    };
+    .login-form{
+        @include sizeXY(40%, 100%);
+        @include flex(center, center);
+        @include responsiveToMin(medium){
+            @include sizeXY(100%, 100%);
+        };
+        flex-direction: column;
+        padding: 1.5rem;
+        h1{ 
+            width: 100%;
+            text-align: left;
+            margin-bottom: 2.2rem;
+        }
+        .input-container{
+           width: 100%;
+        }
+        button{
+            width: 100%;
+            border-radius: 5px;
+            padding: 0.5rem 1.5rem;
+            margin-top: 2.5rem;
+            text-transform: uppercase;
+            background: transparent;
+            cursor: pointer;
+            border: 3px solid #e74c3c;
+            &:hover{
+                background: #e74c3c;
+                color: white;
+            }
+        }
+    }
+}

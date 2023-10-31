@@ -1,0 +1,35 @@
+@use "../../utilities.scss" as *;
+
+.input-container{
+	position:relative;
+	margin-bottom: 2.2rem;
+    label{
+        position:absolute;
+        text-transform: uppercase;
+        top:0px;
+        left:0px;
+        font-size: 1.1rem;
+        color: black;	
+        pointer-events:none;
+        transition: all 0.5s ease-in-out;
+    };
+    input{ 
+        border:0;
+        border-bottom: 3px solid #555;  
+        background:transparent;
+        width: 100%;
+        padding: 1rem 0.5rem;
+        font-size: 1.1rem;
+        color:black;
+        &:focus{
+            border:none;	
+            outline:none;
+            border-bottom: 3px solid #e74c3c;	
+        };
+        &:focus ~ label,
+        &:valid ~ label {
+        top:-14px;
+        font-size:12px;
+        }
+    }; 
+};
