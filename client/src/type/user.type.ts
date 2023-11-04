@@ -31,17 +31,5 @@ export enum userRole {
 export interface ILoginActionUser {
     data: ILoginUser,
     navigate: NavigateFunction
-}
+};
   
-// export interface IAddCustomer {
-//     name: string;
-//     surname: string;
-//     email: string;
-//     city: string;
-//     date: string;
-// };
-  
-// export interface IUpdateCustomer {
-//     id: string;
-//     data: IAddCustomer;
-// };

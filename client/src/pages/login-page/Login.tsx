@@ -19,9 +19,6 @@ function Login() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const validateUserInput = (value: any): void => {
-      setUsername(value);
-  }
 
   const onSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +40,7 @@ function Login() {
                   type= {"text"}
                   name= {"username"}
                   value = {username}
-                  setValue = {validateUserInput}
+                  setValue = {setUsername}
 
               />
               <InputField 
