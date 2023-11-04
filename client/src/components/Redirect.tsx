@@ -1,12 +1,13 @@
 import React from 'react';
-import Spinner from '../../components/spinner/Spinner';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { RootState } from '../app/store';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { RootState } from '../../app/store';
-import { getUserAction } from '../../features/users/user.action';
-import { ApiStatus } from '../../type/apiStatus.type';
+import { getUserAction } from '../features/users/user.action';
+import Spinner from './spinner/Spinner';
+import { ApiStatus } from '../type/apiStatus.type';
 
-function Home() {
+
+function Redirect(): React.JSX.Element {
   const user = useAppSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
 
@@ -32,6 +33,4 @@ function Home() {
   
 };
 
-export default Home
-
-
+export default Redirect

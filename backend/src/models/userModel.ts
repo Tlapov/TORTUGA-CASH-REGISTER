@@ -22,8 +22,8 @@ export const userSchema = new Schema<IUser>({
         type: String,
         required: true,
     },
-    email:  String,
-    phone:  Number
+    email: String,
+    phone: Number
 });
 
-export const UserModel = model<IUser>('users', userSchema);
+export const UserModel = model<IUser>('User', userSchema);

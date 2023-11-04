@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getUser, login } from "./user.service";
-import { ILoginActionUser, ILoginUser } from "../../type/user.type";
+import { ILoginActionUser } from "../../type/user.type";
 import { NavigateFunction } from "react-router-dom";
 
 export const getUserAction = createAsyncThunk(
