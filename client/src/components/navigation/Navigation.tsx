@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { propsNav } from '../../type/props.type';
+import "./navigation.scss"
 
 
 const Navigation = ({navItems}: propsNav): React.JSX.Element => {

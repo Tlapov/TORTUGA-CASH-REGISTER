@@ -1,0 +1,19 @@
+@use "../../utilities.scss" as *;
+
+nav {
+    @include sizeXY(15rem, 100%);
+    background: $bg-color2;
+    z-index: 10000;
+    ul{
+       padding-inline: 1rem;
+       li{
+          padding: 0.5rem 0;
+       };
+       a{
+        color: $text-color2;
+        &.active{
+            color: $danger-color;
+        };
+       };
+    };
+};

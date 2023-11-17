@@ -4,6 +4,7 @@ import { RootState } from '../../app/store';
 import Navigation from '../../components/navigation/Navigation';
 import { navItems } from '../../helpers/NavItems';
 import { Outlet } from 'react-router-dom';
+import "./admin.scss";
 
 function Admin(): React.JSX.Element {
   const user = useAppSelector((state: RootState) => state.user);

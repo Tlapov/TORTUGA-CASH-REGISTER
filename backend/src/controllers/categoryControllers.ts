@@ -57,7 +57,8 @@ export const updateCategory: RequestHandler = async (req:Request, res: Response)
 };
 
 export const deleteCategory: RequestHandler = async (req:Request , res:Response ) => {
-    try {        
+    try {
+        console.log(req.params.id)        
         await CategoryModel.findByIdAndDelete(req.params.id);      
         return res.send({
             success: true,

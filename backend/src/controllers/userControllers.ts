@@ -75,6 +75,8 @@ export const loginUser: RequestHandler = async(req: Request, res: Response) => {
 
 export const getUser: RequestHandler = async (req:Request, res: Response) => {
     try {
+        console.log(req.headers)
+        console.log("Hello world")
        const user = await UserModel.findOne({_id: req.body.userId});
        if(!user){
             return res.send({
