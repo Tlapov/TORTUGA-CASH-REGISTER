@@ -6,7 +6,7 @@ import authMiddleware from "../middlewares/auth.middlewares";
 const router = Router();
 
 router.route("/")
-    .get(getProductByCategory)
+    .get(getProduct)
     .post(createProduct);
 
 router.route("/:id")

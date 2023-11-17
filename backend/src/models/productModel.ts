@@ -29,6 +29,7 @@ export const productSchema = new Schema<IProduct>({
         type: Boolean,
         default: true
     }
-});
+},{versionKey: false}
+);
 
 export const ProductModel = model<IProduct>('Product', productSchema);
