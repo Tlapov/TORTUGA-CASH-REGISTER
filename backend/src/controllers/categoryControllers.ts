@@ -41,7 +41,7 @@ export const createCategory: RequestHandler = async (req:Request , res:Response 
 
 export const updateCategory: RequestHandler = async (req:Request, res: Response) => {
     try {
-        await CategoryModel.findByIdAndUpdate(req.params, req.body);
+        await CategoryModel.findByIdAndUpdate(req.params.id, req.body);
 
         return res.send({
             success: true,
