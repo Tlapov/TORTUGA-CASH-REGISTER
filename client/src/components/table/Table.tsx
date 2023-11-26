@@ -8,6 +8,8 @@ function Table({ ...props }: propsTable): React.JSX.Element {
 
   let content;
 
+  console.log(props.data.length)
+
   const loading = (
     <tbody><tr><td><Spinner /></td></tr></tbody>
   )
@@ -24,6 +26,7 @@ function Table({ ...props }: propsTable): React.JSX.Element {
                  <tr key={d._id}>
                   {headers.map(head => (<td>{typeof d[head] === 'object' ? d[head]?.title : d[head]}</td>))}
                   <td className='delete-action' onClick={() => props.deleteToggle(d._id)}><img src={deleteIcon} alt="" /></td>
+                  <td className='delete-action' onClick={() => props.editToggle(d._id)}>Edit</td>
                 </tr>
               ))}
           </tbody>

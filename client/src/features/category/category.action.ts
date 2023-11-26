@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getCategory, createCategory, deleteCategory } from "./category.service";
+import { getCategory, createCategory, deleteCategory, updateCategory } from "./category.service";
 import { NavigateFunction } from "react-router-dom";
-import { ICreateActionCategory } from "../../type/category.type";
+import { ICreateActionCategory, IUpdateActionCategory } from "../../type/category.type";
 
 export const getCategoryAction = createAsyncThunk(
     'category/get',
@@ -28,6 +28,21 @@ export const createCategoryAction = createAsyncThunk(
         return(error);
       }
     }
+);
+
+export const updateCategoryAction = createAsyncThunk(
+  'category/update',
+  async ( {id, data, navigate} : IUpdateActionCategory) => {
+    try{
+      const response = await updateCategory(id, data);
+      if(response.success){
+        navigate("/admin/kategorije-pica");
+      };
+      return response;
+    }catch(error){
+      return(error);
+    }
+  }
 );
 
 export const deleteCategoryAction = createAsyncThunk(
