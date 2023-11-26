@@ -10,4 +10,5 @@ export interface propsTable {
     title?: string;
     isLoading?: boolean;
     deleteToggle?: any;
+    editToggle?: any;
 };

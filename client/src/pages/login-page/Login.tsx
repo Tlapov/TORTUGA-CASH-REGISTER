@@ -7,7 +7,7 @@ import { RootState } from '../../app/store';
 import { loginUserAction } from '../../features/users/user.action';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { ApiStatus } from '../../type/apiStatus.type';
-import { ILoginUser } from '../../type/user.type';
+import { useForm } from '../../helpers/useForm';
 
 
 function Login() {
@@ -16,43 +16,54 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
-
+  const {data, errors, handleChange} = useForm({
+      username: {
+        value: "",
+        required: true,
+        custom: {
+          isValid: (value: string) => value.length > 4,
+          message: 'Polje username mora biti dugačko najmanje 4 slova',
+        },
+      },
+      password: {
+        value: "",
+        required: true
+      }
+  });
 
   const onSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
-    const data: ILoginUser = {username, password};
-    if(username && password){
+    if(Object.keys(errors).length === 0) {
       await dispatch(loginUserAction({data, navigate}));
-    };
+    }
   };
   
   return (
     <>  
-        {user.loginUserStatus === ApiStatus.loading && <Spinner />}
-        {user.token  ?  <Navigate to={"/"} /> : (
-          <section className='login'>
-            <div className='login-background'></div>
-            <form className='login-form'>
-              <h1>DOBRODOŠLI U SUSTAV <span style={{color:"red"}}>PRIJAVE TORTUGA E-CASH</span></h1>
-              <InputField 
-                  type= {"text"}
-                  name= {"username"}
-                  value = {username}
-                  setValue = {setUsername}
-
+      {user.loginUserStatus === ApiStatus.loading && <Spinner />}
+      {user.token  ?  <Navigate to={"/"} /> : (
+        <section className='login'>
+          <div className='login-background'></div>
+          <form className='login-form'>
+            <h1>DOBRODOŠLI U SUSTAV <span style={{color:"red"}}>PRIJAVE TORTUGA E-CASH</span></h1>
+            <InputField 
+                type= {"text"}
+                name= {"username"}
+                value = {data.username}
+                handleInput = {handleChange}
+                error = {errors.hasOwnProperty('username') ? errors?.username : null}
+            />
+            <InputField 
+                type= {"password"}
+                name= {"password"}
+                value = {data.password}
+                handleInput = {handleChange}
+                error = {errors.hasOwnProperty('password') ? errors?.password : null}
               />
-              <InputField 
-                  type= {"password"}
-                  name= {"password"}
-                  value = {password}
-                  setValue = {setPassword}
-              />
-              <button disabled={username && password ? false : true} onClick={onSubmit}>Login</button>
-            </form>
+            <button onSubmit={onSubmit}>Login</button>
+          </form>
         </section>
-        )}
+      )}
         
     </>
   )

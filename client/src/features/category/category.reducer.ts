@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCategoryAction, createCategoryAction, deleteCategoryAction } from "./category.action";
+import { getCategoryAction, createCategoryAction, deleteCategoryAction, updateCategoryAction } from "./category.action";
 import { ApiStatus } from "../../type/apiStatus.type";
 import { ICategoryState } from "../../type/category.type";
 
@@ -33,6 +33,16 @@ export const categorySlice = createSlice({
         state.status =  !action.payload.success ? ApiStatus.error : ApiStatus.success;
       });
       builder.addCase(createCategoryAction.rejected, (state) => {
+        state.status = ApiStatus.error;
+      });
+
+      builder.addCase(updateCategoryAction.pending, (state) => {
+        state.status = ApiStatus.loading;
+      });
+      builder.addCase(updateCategoryAction.fulfilled, (state, action) => {
+        state.status =  !action.payload.success ? ApiStatus.error : ApiStatus.success;
+      });
+      builder.addCase(updateCategoryAction.rejected, (state) => {
         state.status = ApiStatus.error;
       });
 
