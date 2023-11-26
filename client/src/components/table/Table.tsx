@@ -5,10 +5,7 @@ import deleteIcon from "../../img/delete-icon.svg"
 import Spinner from '../spinner/Spinner';
 
 function Table({ ...props }: propsTable): React.JSX.Element {
-
   let content;
-
-  console.log(props.data.length)
 
   const loading = (
     <tbody><tr><td><Spinner /></td></tr></tbody>
@@ -22,9 +19,9 @@ function Table({ ...props }: propsTable): React.JSX.Element {
             <tr>{headers.map((head, index) => (<th key={index}>{head}</th>))}<th className='delete-action'></th></tr>
           </thead>
           <tbody>
-              {props.data.map(d=> (
-                 <tr key={d._id}>
-                  {headers.map(head => (<td>{typeof d[head] === 'object' ? d[head]?.title : d[head]}</td>))}
+              {props.data.map((d, index) => (
+                 <tr key={index}>
+                  {headers.map((head, index) => (<td key={index}>{typeof d[head] === 'object' ? d[head]?.title : d[head]}</td>))}
                   <td className='delete-action' onClick={() => props.deleteToggle(d._id)}><img src={deleteIcon} alt="" /></td>
                   <td className='delete-action' onClick={() => props.editToggle(d._id)}>Edit</td>
                 </tr>
